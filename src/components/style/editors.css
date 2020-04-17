@@ -1,0 +1,49 @@
+.editors {
+  display: flex;
+  flex-direction: row;
+  border-bottom: 35px solid #504c4c;
+}
+
+.editorContainer {
+  display: flex;
+  flex-direction: column;
+  border-left: 20px solid #504c4c;
+  border-right: 20px solid #504c4c;
+}
+.editorContainer .title {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.editorContainer .btn {
+  max-width: max-content;
+  padding: 0 10px 0 10px;
+  margin-right: 20px;
+  font-size: 10px;
+}
+
+h3.title {
+  background: #000;
+  margin: 0;
+  text-align: left;
+  color: #b3b3b3;
+  font-size: 20px;
+  padding: 5px 0 5px 20px;
+}
+
+.resultContainer {
+  width: -webkit-fill-available;
+  width: available;
+  background: #272822;
+}
+.resultContainer .result {
+  background: #202020;
+  font-size: 14px;
+  color: #b3b3ad;
+  white-space: pre;
+}
+.resultContainer .result.error {
+  color: red;
+}
+
+/*# sourceMappingURL=editors.css.map */

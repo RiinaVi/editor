@@ -1,9 +1,10 @@
 import React, {useState} from "react";
-import ResultWindow from "./ResultWindow";
 import './style/editors.scss'
-import Header from "./Header";
 import Editor from "./Editor";
-
+import {runCode} from "../utils/getResult.js";
+import RunButton from "./RunButton";
+import RunTestsButton from "./RunTestsButton";
+import runTests from "../utils/runTests";
 
 const EditorsContainer = () => {
 
@@ -25,49 +26,29 @@ const EditorsContainer = () => {
 
     const [jsonCode, setJsonCode] = useState(defaultJson);
     const [jsCode, setJsCode] = useState(defaultJS);
-    const [res, setRes] = useState('');
+    const [res, setRes] = useState('Nothing to show yet...');
     const [hasError, setError] = useState(false);
-
-    let logs: Array<string> = [];
-
-    // eslint-disable-next-line @typescript-eslint/no-unused-vars
-    function customLog(code: string) {
-        // console.log(code);
-        logs.push(code);
-    }
-
-    async function getResult() {
-        setError(false);
-        try {
-
-            // eslint-disable-next-line no-eval,@typescript-eslint/no-unused-vars
-            let SESSION = JSON.parse(jsonCode);
-            // eslint-disable-next-line no-eval
-            await eval(`${duplicateConsoleLog(jsCode)}`);
-            setRes(logs.join('\n'));
-            console.log(logs);
-            logs = [];
-
-        } catch (e) {
-            setError(true);
-            setRes(`Error!\n${e}`);
-            console.log(e.message, e)
-        }
-    }
-
-    function duplicateConsoleLog(code: string): string {
-        code = code.replace(/console\.log/g, 'customLog');
-        return code;
-    }
 
     return (
         <>
-            <Header getResult={getResult}/>
+            <RunButton
+                runCode={runCode} setError={setError} setRes={setRes} jsCode={jsCode} jsonCode={jsonCode}
+            />
+            <RunTestsButton
+                runCode={runTests} setError={setError} setRes={setRes} jsCode={jsCode} jsonCode={jsonCode}
+            />
             <div className={'editors'}>
-                <Editor title={'JSON'} lang={'json'} code={jsonCode} setCode={setJsonCode} defaultValue={defaultJson}/>
                 <Editor title={'JavaScript'} lang={'javascript'} code={jsCode} setCode={setJsCode}
-                        defaultValue={defaultJS}/>
-                <ResultWindow error={hasError} result={res} setResult={setRes}/>
+                        defaultValue={defaultJS} height={(window.innerHeight)}/>
+                        <div>
+                            <Editor title={'JSON'} lang={'json'} code={jsonCode} setCode={setJsonCode}
+                                    defaultValue={defaultJson}
+                                    height={(window.innerHeight-34) / 2}/>
+                            <Editor title={'Result'} lang={'javascript'} code={res}
+                                    defaultValue={'Nothing to show yet...'} height={(window.innerHeight-34)/2}
+                                    readOnly={true}
+                            />
+                        </div>
             </div>
         </>
     )

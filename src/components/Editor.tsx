@@ -7,24 +7,26 @@ import "ace-builds/src-noconflict/theme-monokai";
 
 type Props = {
     title: string,
-    lang:string,
-    code:string,
-    setCode: Dispatch<SetStateAction<string>>,
-    defaultValue: string
+    lang: string,
+    code: string,
+    setCode?: Dispatch<SetStateAction<string>>,
+    defaultValue: string,
+    height: number,
+    readOnly?:boolean
 }
 
 
-const Editor = ({title, lang, code, setCode, defaultValue}:Props) => {
+const Editor = ({title, lang, code, setCode, defaultValue, height, readOnly}: Props) => {
     function onChange(newValue: any) {
-        setCode(newValue);
+        !readOnly && setCode && setCode(newValue);
     }
 
     return (
         <div className={'editorContainer'}>
             <h3 className={'title'}>{title}</h3>
             <AceEditor
-                width={'450px'}
-                height={window.innerHeight - 125 + 'px'}
+                width={window.innerWidth/2+'px'}
+                height={(height).toString()+'px'}
                 mode={lang}
                 theme="monokai"
                 onChange={onChange}
@@ -33,6 +35,7 @@ const Editor = ({title, lang, code, setCode, defaultValue}:Props) => {
                 fontSize={14}
                 value={code}
                 defaultValue={defaultValue}
+                readOnly={readOnly}
             />
         </div>
     )

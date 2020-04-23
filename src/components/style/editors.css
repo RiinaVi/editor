@@ -1,25 +1,37 @@
+.root {
+  position: relative;
+}
+
+.runButton, .runTestsButton {
+  z-index: 5;
+  position: absolute;
+  left: 35vw;
+  top: 85vh;
+  padding: 5px 46px;
+  margin-right: 20px;
+  font-size: 21px;
+}
+
+.runTestsButton {
+  left: 80vw;
+  padding: 5px 22px;
+}
+
 .editors {
   display: flex;
   flex-direction: row;
-  border-bottom: 35px solid #504c4c;
 }
 
 .editorContainer {
   display: flex;
   flex-direction: column;
-  border-left: 20px solid #504c4c;
-  border-right: 20px solid #504c4c;
+  border-left: 1px solid #504c4c;
+  border-right: 1px solid #504c4c;
 }
 .editorContainer .title {
   display: flex;
   justify-content: space-between;
   align-items: center;
-}
-.editorContainer .btn {
-  max-width: max-content;
-  padding: 0 10px 0 10px;
-  margin-right: 20px;
-  font-size: 10px;
 }
 
 h3.title {
@@ -32,8 +44,8 @@ h3.title {
 }
 
 .resultContainer {
-  width: -webkit-fill-available;
-  width: available;
+  width: 50vw;
+  height: 50vh;
   background: #272822;
 }
 .resultContainer .result {

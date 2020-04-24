@@ -4,7 +4,7 @@ import Editor from "./Editor";
 import RunButton from "./RunButton";
 import RunTestsButton from "./RunTestsButton";
 import runTests from "../utils/runTests";
-const {runCode} = require( "../utils/getResult.js");
+import {runCode} from "../utils/getResult.js";
 
 const EditorsContainer = () => {
 

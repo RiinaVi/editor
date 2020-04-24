@@ -10,7 +10,7 @@ function duplicateConsoleLog(code) {
     return code;
 }
 
-async function evaluateResult(jsonCode, jsCode) {
+export async function evaluateResult(jsonCode, jsCode) {
     // @typescript-eslint/no-unused-vars
     // eslint-disable-next-line no-unused-vars
     let SESSION = JSON.parse(jsonCode);
@@ -20,7 +20,7 @@ async function evaluateResult(jsonCode, jsCode) {
 }
 
 
-async function runCode(setError, setRes,
+export async function runCode(setError, setRes,
     jsonCode, jsCode) {
     setError(false);
     try {
@@ -34,7 +34,7 @@ async function runCode(setError, setRes,
     }
 }
 
-module.exports = {
-    evaluateResult,
-    runCode
-};
+// module.exports = {
+//     evaluateResult,
+//     runCode
+// };

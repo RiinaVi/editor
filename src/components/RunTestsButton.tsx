@@ -11,8 +11,7 @@ type Props = {
 }
 
 const RunTestsButton = (
-    {runCode, setError, setRes, jsCode, jsonCode}: Props
-) => {
+    {runCode, setError, setRes, jsCode, jsonCode}: Props) => {
     return (
         <Button className={'runTestsButton'} onClick={() => runCode(setError, setRes, jsonCode, jsCode)}
                 variant="warning">Run tests</Button>

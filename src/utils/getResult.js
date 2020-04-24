@@ -1,8 +1,7 @@
 let logs = [];
 
-// eslint-disable-next-line @typescript-eslint/no-unused-vars
+// eslint-disable-next-line @typescript-eslint/no-unused-vars,no-unused-vars
 function customLog(code) {
-    // console.log(code);
     logs.push(code);
 }
 
@@ -12,7 +11,8 @@ function duplicateConsoleLog(code) {
 }
 
 async function evaluateResult(jsonCode, jsCode) {
-    // eslint-disable-next-line no-eval,@typescript-eslint/no-unused-vars
+    // @typescript-eslint/no-unused-vars
+    // eslint-disable-next-line no-unused-vars
     let SESSION = JSON.parse(jsonCode);
     // eslint-disable-next-line no-eval
     await eval(`${duplicateConsoleLog(jsCode)}`);

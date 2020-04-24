@@ -1,7 +1,5 @@
 // We use the assert standard library to make assertions
 const assert = require('assert')
-// const { add, subtract } = require('./calculator')
-// const EditorsContainer = require('../src/components/EditorsContainer')
 const {evaluateResult} = require('../src/utils/getResult');
 
 

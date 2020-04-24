@@ -1,10 +1,10 @@
 import React, {useState} from "react";
 import './style/editors.scss'
 import Editor from "./Editor";
-import {runCode} from "../utils/getResult.js";
 import RunButton from "./RunButton";
 import RunTestsButton from "./RunTestsButton";
 import runTests from "../utils/runTests";
+const {runCode} = require( "../utils/getResult.js");
 
 const EditorsContainer = () => {
 
@@ -27,6 +27,7 @@ const EditorsContainer = () => {
     const [jsonCode, setJsonCode] = useState(defaultJson);
     const [jsCode, setJsCode] = useState(defaultJS);
     const [res, setRes] = useState('Nothing to show yet...');
+    // eslint-disable-next-line @typescript-eslint/no-unused-vars
     const [hasError, setError] = useState(false);
 
     return (

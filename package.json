@@ -10,6 +10,9 @@
     "@types/react": "^16.9.34",
     "@types/react-dom": "^16.9.6",
     "ace-builds": "^1.4.11",
+    "axios": "^0.19.2",
+    "concurrently": "^5.2.0",
+    "express": "^4.17.1",
     "node-sass": "^4.13.1",
     "react": "^16.13.1",
     "react-ace": "^8.1.0",
@@ -22,7 +25,9 @@
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
-    "eject": "react-scripts eject"
+    "eject": "react-scripts eject",
+    "server": "cd src/api && nodemon server",
+    "dev": "concurrently \"npm run server\" \"npm run start\""
   },
   "eslintConfig": {
     "extends": "react-app"

@@ -38,6 +38,27 @@ $border-grey: #504c4c;
 
 }
 
+input {
+  position: absolute;
+  left: 60%;
+  height: 1.5em;
+  top: 5px;
+  width: 4em;
+  border: 1px solid;
+  padding: 3px;
+  font-weight: 500;
+  background: #a9a6a6;
+  border-radius: 5px;
+}
+
+span.totalNum {
+  position: absolute;
+  left: 65%;
+  top: 4px;
+  color: gray;
+  font-weight: 500;
+}
+
 h3.title {
   background: #000;
   margin: 0;

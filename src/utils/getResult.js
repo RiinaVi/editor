@@ -1,8 +1,12 @@
 let logs = [];
 
 // eslint-disable-next-line @typescript-eslint/no-unused-vars,no-unused-vars
-function customLog(code) {
-    logs.push(code);
+function customLog() {
+    let str = [];
+    for (let i = 0; i < arguments.length; i++) {
+        str.push(JSON.stringify(arguments[i]));
+    }
+        logs.push(str.join(', '))
 }
 
 function duplicateConsoleLog(code) {

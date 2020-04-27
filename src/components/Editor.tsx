@@ -31,6 +31,7 @@ const Editor = ({title, lang, code, setCode, defaultValue, height, readOnly}: Pr
                 theme="monokai"
                 onChange={onChange}
                 name={title}
+                wrapEnabled={true}
                 editorProps={{$blockScrolling: true}}
                 fontSize={14}
                 value={code}

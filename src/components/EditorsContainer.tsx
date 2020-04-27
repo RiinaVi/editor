@@ -24,7 +24,7 @@ const EditorsContainer = () => {
     useMemo(() => {
         axios({
             method: 'get',
-            url: 'http://localhost:5000/api',
+            url: 'https://editor.riinavi.now.sh/',
         }).then(res => {
             setData(res.data.data)
             console.log(res.data.data[0]);

@@ -21,15 +21,15 @@ const EditorsContainer = () => {
     const [index, setIndex] = useState(0);
     const [data, setData] = useState(defaultJson);
 
-    useMemo(() => {
-        axios({
-            method: 'get',
-            url: 'https://editor.riinavi.now.sh/',
-        }).then(res => {
-            setData(res.data.data)
-            console.log(res.data.data[0]);
-        });
-    }, [setData]);
+    // useMemo(() => {
+    //     axios({
+    //         method: 'get',
+    //         url: 'https://editor.riinavi.now.sh/',
+    //     }).then(res => {
+    //         setData(res.data.data)
+    //         console.log(res.data.data[0]);
+    //     });
+    // }, [setData]);
 
     useEffect(() => {
         setJsonCode(JSON.stringify(data[index], null, 4))
@@ -53,7 +53,7 @@ const EditorsContainer = () => {
                            defaultValue={index}
                            min={0}
                            onChange={e => setIndex(parseInt(e.target.value))}/>
-                    {/*<span className={'totalNum'}>/ {data.length}</span>*/}
+                    <span className={'totalNum'}>/ {data.length}</span>
                     <Editor title={'JSON'} lang={'json'} code={jsonCode} setCode={setJsonCode}
                             defaultValue={defaultJson}
                             height={(window.innerHeight - 34) / 2}/>

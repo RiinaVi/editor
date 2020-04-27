@@ -53,7 +53,7 @@ const EditorsContainer = () => {
                            defaultValue={index}
                            min={0}
                            onChange={e => setIndex(parseInt(e.target.value))}/>
-                    <span className={'totalNum'}>/ {data.length}</span>
+                    {/*<span className={'totalNum'}>/ {data.length}</span>*/}
                     <Editor title={'JSON'} lang={'json'} code={jsonCode} setCode={setJsonCode}
                             defaultValue={defaultJson}
                             height={(window.innerHeight - 34) / 2}/>

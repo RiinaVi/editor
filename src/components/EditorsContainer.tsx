@@ -44,10 +44,10 @@ const EditorsContainer = () => {
                         defaultValue={defaultJS} height={(window.innerHeight-34)}/>
                 <div>
                     <input type="number"
-                           defaultValue={index}
-                           min={0}
+                           defaultValue={index+1}
+                           min={1}
                            onFocus={(e) => e.target.select()}
-                           onChange={e => setIndex(parseInt(e.target.value))}/>
+                           onChange={e => setIndex(parseInt(e.target.value)-1)}/>
                     <span className={'totalNum'}>/ {data.length}</span>
                     <Editor title={'JSON'} lang={'json'} code={jsonCode} setCode={setJsonCode}
                             defaultValue={defaultJson}

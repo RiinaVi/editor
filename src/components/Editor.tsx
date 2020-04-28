@@ -1,4 +1,4 @@
-import React, {Dispatch, SetStateAction} from "react";
+import React, {Dispatch, SetStateAction, useState, useLayoutEffect} from "react";
 import AceEditor from "react-ace";
 
 import "ace-builds/src-noconflict/mode-javascript";
@@ -12,7 +12,21 @@ type Props = {
     setCode?: Dispatch<SetStateAction<string>>,
     defaultValue: string,
     height: number,
-    readOnly?:boolean
+    readOnly?: boolean
+}
+
+
+function useWindowSize(height:number) {
+    const [size, setSize] = useState([0, 0]);
+    useLayoutEffect(() => {
+        function updateSize() {
+            setSize([window.innerWidth,height]);
+        }
+        window.addEventListener('resize', updateSize);
+        updateSize();
+        return () => window.removeEventListener('resize', updateSize);
+    }, [height]);
+    return size;
 }
 
 
@@ -21,12 +35,15 @@ const Editor = ({title, lang, code, setCode, defaultValue, height, readOnly}: Pr
         !readOnly && setCode && setCode(newValue);
     }
 
+    // eslint-disable-next-line @typescript-eslint/no-unused-vars
+    const [windowWidth, windowHeight] = useWindowSize(height);
+
     return (
         <div className={'editorContainer'}>
             <h3 className={'title'}>{title}</h3>
             <AceEditor
-                width={window.innerWidth/2+'px'}
-                height={(height).toString()+'px'}
+                width={windowWidth / 2 - 2 + 'px'}
+                height={(height).toString() + 'px'}
                 mode={lang}
                 theme="monokai"
                 onChange={onChange}

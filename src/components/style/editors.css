@@ -64,19 +64,4 @@ h3.title {
   padding: 5px 0 5px 20px;
 }
 
-.resultContainer {
-  width: 50vw;
-  height: 50vh;
-  background: #272822;
-}
-.resultContainer .result {
-  background: #202020;
-  font-size: 14px;
-  color: #b3b3ad;
-  white-space: pre;
-}
-.resultContainer .result.error {
-  color: red;
-}
-
 /*# sourceMappingURL=editors.css.map */

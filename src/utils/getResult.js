@@ -24,21 +24,16 @@ export async function evaluateResult(jsonCode, jsCode) {
 }
 
 
-export async function runCode(setError, setRes,
+export async function runCode( setRes,
     jsonCode, jsCode) {
-    setError(false);
     try {
         setRes(await evaluateResult(jsonCode, jsCode));
         logs = [];
 
     } catch (e) {
-        setError(true);
         setRes(`Error!\n${e}`);
         console.log(e.message, e)
     }
 }
 
-// module.exports = {
-//     evaluateResult,
-//     runCode
-// };
+

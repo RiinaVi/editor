@@ -1,20 +1,36 @@
 import React, {Dispatch, SetStateAction} from "react";
-import {Button} from "react-bootstrap";
+import {Button, Tooltip, OverlayTrigger} from "react-bootstrap";
 import './style/editors.scss'
 
 type Props = {
     runCode: any,
-    setError: Dispatch<SetStateAction<boolean>>,
     setRes: Dispatch<SetStateAction<string>>,
     jsonCode: string,
     jsCode: string
 }
 
-const RunTestsButton = (
-    {runCode, setError, setRes, jsCode, jsonCode}: Props) => {
+function renderTooltip(props: any) {
     return (
-        <Button className={'runTestsButton'} onClick={() => runCode(setError, setRes, jsonCode, jsCode)}
-                variant="warning">Run tests</Button>
+        <Tooltip id="button-tooltip" {...props}>
+            Not available yet...
+        </Tooltip>
+    );
+}
+
+const RunTestsButton = (
+    {runCode, setRes, jsCode, jsonCode}: Props) => {
+    return (
+        <OverlayTrigger
+            placement="top"
+            delay={{show: 250, hide: 400}}
+            overlay={renderTooltip}
+        >
+            <Button
+                className={'runTestsButton'} style={{cursor: "not-allowed"}}
+                // onClick={() => runCode(setRes, jsonCode, jsCode)}
+                variant="warning">Run tests
+            </Button>
+        </OverlayTrigger>
     )
 };
 

@@ -24,18 +24,17 @@ $border-grey: #504c4c;
   flex-direction: row;
 }
 
-
 .editorContainer {
   display: flex;
   flex-direction: column;
   border-left: 1px solid $border-grey;
   border-right: 1px solid $border-grey;
-  .title{
+
+  .title {
     display: flex;
     justify-content: space-between;
     align-items: center;
   }
-
 }
 
 input {
@@ -68,19 +67,4 @@ h3.title {
   padding: 5px 0 5px 20px;
 }
 
-.resultContainer {
-  width: 50vw;
-  height: 50vh;
-  background: #272822;
-
-  .result {
-    background: #202020;
-    font-size: 14px;
-    color: #b3b3ad;
-    white-space: pre;
-    &.error{
-      color: red;
-    }
-  }
-}
 

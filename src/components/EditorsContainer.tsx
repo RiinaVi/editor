@@ -15,9 +15,6 @@ const EditorsContainer = () => {
     const [jsonCode, setJsonCode] = useState(defaultJson);
     const [jsCode, setJsCode] = useState(defaultJS);
     const [res, setRes] = useState('Nothing to show yet...');
-    // eslint-disable-next-line @typescript-eslint/no-unused-vars
-    const [hasError, setError] = useState(false);
-
     const [index, setIndex] = useState(0);
     const [data, setData] = useState(defaultJson);
 
@@ -27,38 +24,36 @@ const EditorsContainer = () => {
             url: 'https://riinavi.github.io/pacanam.json',
         }).then(res => {
             setData(res.data)
-            console.log(res.data);
         });
     }, [setData]);
 
     useEffect(() => {
         setJsonCode(JSON.stringify(data[index], null, 4))
-        console.log(data[index])
     }, [setJsonCode, data, index])
-
 
     return (
         <>
             <RunButton
-                runCode={runCode} setError={setError} setRes={setRes} jsCode={jsCode} jsonCode={jsonCode}
+                runCode={runCode} setRes={setRes} jsCode={jsCode} jsonCode={jsonCode}
             />
             <RunTestsButton
-                runCode={runTests} setError={setError} setRes={setRes} jsCode={jsCode} jsonCode={jsonCode}
+                runCode={runTests} setRes={setRes} jsCode={jsCode} jsonCode={jsonCode}
             />
             <div className={'editors'}>
                 <Editor title={'JavaScript'} lang={'javascript'} code={jsCode} setCode={setJsCode}
-                        defaultValue={defaultJS} height={(window.innerHeight)}/>
+                        defaultValue={defaultJS} height={(window.innerHeight-34)}/>
                 <div>
                     <input type="number"
                            defaultValue={index}
                            min={0}
+                           onFocus={(e) => e.target.select()}
                            onChange={e => setIndex(parseInt(e.target.value))}/>
                     <span className={'totalNum'}>/ {data.length}</span>
                     <Editor title={'JSON'} lang={'json'} code={jsonCode} setCode={setJsonCode}
                             defaultValue={defaultJson}
-                            height={(window.innerHeight - 34) / 2}/>
+                            height={(window.innerHeight - 68) / 2}/>
                     <Editor title={'Result'} lang={'javascript'} code={res}
-                            defaultValue={'Nothing to show yet...'} height={(window.innerHeight - 34) / 2}
+                            defaultValue={'Nothing to show yet...'} height={(window.innerHeight - 68) / 2}
                             readOnly={true}
                     />
                 </div>

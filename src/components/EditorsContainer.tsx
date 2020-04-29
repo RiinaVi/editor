@@ -6,10 +6,11 @@ import RunTestsButton from "./RunTestsButton";
 import runTests from "../utils/runTests";
 import {runCode} from "../utils/getResult.js";
 import './style/editors.scss'
+import {Spinner} from "react-bootstrap";
 
 const EditorsContainer = () => {
 
-    const defaultJson = '{"a":1}';
+    const defaultJson = '';
     const defaultJS = 'console.log(SESSION[0].ref);';
 
     const [jsonCode, setJsonCode] = useState(defaultJson);
@@ -17,13 +18,16 @@ const EditorsContainer = () => {
     const [res, setRes] = useState('Nothing to show yet...');
     const [index, setIndex] = useState(0);
     const [data, setData] = useState(defaultJson);
+    const [isLoading, setIsLoading] = useState(false);
 
     useMemo(() => {
+        setIsLoading(true);
         axios({
             method: 'get',
             url: 'https://riinavi.github.io/pacanam.json',
         }).then(res => {
-            setData(res.data)
+            setData(res.data);
+            setIsLoading(false);
         });
     }, [setData]);
 
@@ -33,6 +37,10 @@ const EditorsContainer = () => {
 
     return (
         <>
+            {isLoading && <Spinner animation="border" role="status" variant="warning">
+                <span className="sr-only">Loading...</span>
+            </Spinner>}
+
             <RunButton
                 runCode={runCode} setRes={setRes} jsCode={jsCode} jsonCode={jsonCode}
             />
